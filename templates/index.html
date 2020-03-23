@@ -1,6 +1,35 @@
 <head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <meta charset="utf-8">
     <title>Hand Written digit Recognition</title>
 </head>
 <body>
-    <p>hello world</p>
+    <header class="w3-container w3-orange w3-center">
+        <h1>CNN - Hand Written digit Recognition</h1>
+    </header>
+    <br><br>
+
+    <div class="w3-center">
+        <div class="boxitem">
+            <canvas id="inputimg" width="300" height="300"></canvas>
+            <button id="clearbtn">Clear</button>
+        </div>
+        
+        <div class="boxitem">
+            <div id="predictdigit"></div>
+            <div >Predicted Digit </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>   
+    <script src="//d3js.org/d3.v5.min.js"></script>
+
+    <br><br>
+    <div class="w3-center w3-container w3-orange">
+        <a href="https://github.com/elisontuscano/CNN-Hand-Written-Digit-Recognition">github.com/elisontuscano/CNN-Hand-Written-Digit-Recognition</a><br/>
+        - By Elison Tuscano
+    </div>
+
 </body>
