@@ -13,7 +13,7 @@ model = load_model('model/mnist.h5')
 app= Flask(__name__)
 
 def predict_digit(img):
-    #img=Image.open(img)
+    img=Image.open(img)
     #resize image to 28x28 pixels
     img = img.resize((28,28))
     #convert rgb to grayscale
@@ -24,7 +24,7 @@ def predict_digit(img):
     img = img/255.0
     #predicting the class
     print('now predicting the digit')
-    res = model.predict([img])
+    res = model.predict([img])[0]
     return np.argmax(res), max(res)
 
 @app.route('/')
@@ -39,21 +39,21 @@ def Execpy():
         postImg = BytesIO(base64.urlsafe_b64decode(request.form['img']))
         
         
-        #try
-        img=Image.open('saveImage/sample2.png')
         #predict the digit
-        digit, accuracy = predict_digit(img)
-        result['predict_digit']= digit
-        result['accuracy']=accuracy
+        digit, accuracy = predict_digit(postImg)
+        result['predict_digit']= str(digit)
+        result['accuracy']=str(accuracy)
+        
         
         '''
-        #save digits 
+        #save predicted image 
     
         postImg = Image.open(postImg)
         postImg.save("./saveImage/{}_save.png".format(datetime.now().strftime('%m-%d_%H.%M.%S')))
         '''
+        
     return json.dumps(result)
     
 
 if __name__== '__main__':
-    app.run(debug=True,threaded=False)
+    app.run("0.0.0.0",5000,debug=False,threaded=False)

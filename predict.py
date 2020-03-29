@@ -28,4 +28,4 @@ img=Image.open('saveImage/1.png')
 
 digit, accuracy = predict_digit(img)
 print(digit)
-print(accuracy)
+#print(accuracy)
