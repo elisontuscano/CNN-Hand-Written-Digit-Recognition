@@ -4,7 +4,7 @@ import base64, json
 import numpy as np
 from PIL import Image
 from datetime import datetime
-from PIL import ImageGrab, Image
+from PIL import  Image
 import numpy as np
 from keras.models import load_model
 
