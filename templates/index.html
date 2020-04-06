@@ -1,8 +1,35 @@
 <head>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('Static', filename='css/style.css') }}">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <meta charset="utf-8">
     <title>Hand Written digit Recognition</title>
+    <style>
+        .boxitem {
+    display: inline-block;
+    vertical-align: top;
+}
+
+#inputimg {
+    vertical-align: top;
+    border: solid 1px black;
+}
+
+#clearbtn {
+    width: 100%;
+    font-size: medium;
+    display: block;
+}
+
+#predictdigit {
+    width: 196px;
+    height: 196px;
+    line-height: 196px;
+    font-size: 160px;
+    border: solid 1px black;
+    background-color: white;
+    font-family: Century;
+}
+    </style>
 </head>
 <body>
     <header class="w3-container w3-orange w3-center">
@@ -22,7 +49,7 @@
         </div>
     </div>
 
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="{{ url_for('Static', filename='js/script.js') }}"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>   
     <script src="//d3js.org/d3.v5.min.js"></script>
 
