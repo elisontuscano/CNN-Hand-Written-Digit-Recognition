@@ -23,7 +23,7 @@ def predict_digit(img):
     img = img.reshape(1,28,28,1)
     img = img/255.0
     #predicting the class
-    print('now predicting the digit')
+    #print('now predicting the digit')
     res = model.predict([img])[0]
     return np.argmax(res), max(res)
 
@@ -56,4 +56,4 @@ def Execpy():
     
 
 if __name__== '__main__':
-    app.run("0.0.0.0",5000,debug=False,threaded=False)
+    app.run("0.0.0.0",5000,threaded=False)
