@@ -5,12 +5,18 @@ import numpy as np
 from PIL import Image
 from datetime import datetime
 from PIL import  Image
-import numpy as np
 from keras.models import load_model
 
-model = load_model('model/mnist.h5')
-
+model = load_model('model/collabmnist.h5')
 app= Flask(__name__)
+
+def value_invert(img):
+    
+    flatimg = img.flatten()
+    for i in range(flatimg.size):
+        flatimg[i] = 1 - flatimg[i]
+
+    return flatimg.reshape(img.shape)
 
 def predict_digit(img):
     img=Image.open(img)
@@ -19,11 +25,9 @@ def predict_digit(img):
     #convert rgb to grayscale
     img = img.convert('L')
     img = np.array(img)
-    #reshaping to support our model input and normalizing
-    img = img.reshape(1,28,28,1)
-    img = img/255.0
-    #predicting the class
-    #print('now predicting the digit')
+    #reshaping to support our model input and normalizing also invert to black canvas with white paint as mnist has data in that format
+    img=value_invert(img/255).reshape((1, 28, 28,1))
+    
     res = model.predict([img])[0]
     return np.argmax(res), max(res)
 
